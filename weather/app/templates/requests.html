@@ -1,0 +1,59 @@
+{% load static %}
+<html>
+    <head>
+        <title>Weather</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <video class="video" autoplay loop muted>
+<!--        <source src="https://joy1.videvo.net/videvo_files/video/free/2015-08/large_watermarked/beach13_preview.mp4" type="video/mp4" />-->
+        <source src="{% static 'weather1.mp4' %}" type="video/mp4" />
+    </video>
+        <div class="weather_base">
+            <div class="content_block">
+            <table>
+                 <tr>
+                    <td width="200px"><h4>Request</h4></td>
+                    <td width="200px"><h4>Temperature</h4></td>
+                     <td width="110px"><h4>Weather</h4></td>
+                </tr>
+                <tr>
+                     <td colspan="3">
+                        <div class="line_btw"></div>
+                    </td>
+                </tr>
+             {% for x in requests%}
+                <tr>
+                    <td>
+                        <h5>{{ x.req_city}}</h5>
+                    </td>
+                    <td>
+                        <h5>{{ x.req_temp }}</h5>
+                    </td>
+                    <td>
+                        <h5>{{ x.req_weather }}</h5>
+                    </td>
+                    </tr>
+                 <tr>
+                     <td colspan="3">
+                        <div class="line_btw"></div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+             <input class="button_inp" type="button" onclick="history.back(-2); return false;" value="Назад"/>
+                </div>
+        </div>
+    </body>
+</html>
